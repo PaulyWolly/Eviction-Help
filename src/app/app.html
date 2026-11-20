@@ -1,0 +1,223 @@
+<a class="skip-link" href="#story">Skip to story</a>
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="#top" (click)="closeMenu()">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">Paul Welby</span>
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="site-nav"
+      (click)="toggleMenu()"
+    >
+      <span class="sr-only">Menu</span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" [class.is-open]="menuOpen()">
+      <a href="#story" (click)="closeMenu()">Story</a>
+      <a href="#goal" (click)="closeMenu()">Goal</a>
+      <a href="#media" (click)="closeMenu()">Video</a>
+      <a href="#updates" (click)="closeMenu()">Updates</a>
+      <a href="#contact" (click)="closeMenu()">Contact</a>
+      <a class="btn btn-small" [href]="goFundMeUrl" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">
+        Donate
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero: brand + one ask + CTA -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-backdrop" aria-hidden="true"></div>
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <p class="brand-hero">{{ brand }}</p>
+        <h1 id="hero-heading">Help keep a disabled Navy veteran housed</h1>
+        <p class="lede">
+          Rent arrears put Paul at risk of eviction by {{ deadline }}. Donate or share to help him stay stable.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" [href]="goFundMeUrl" target="_blank" rel="noopener noreferrer">
+            Donate on GoFundMe
+          </a>
+          <a class="btn btn-ghost" href="#story">Read the story</a>
+        </div>
+      </div>
+
+      <a
+        class="hero-portrait"
+        [href]="goFundMeUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="assets/gofundme-paul-welby.png"
+          alt="Paul Welby — open GoFundMe campaign"
+          width="1200"
+          height="630"
+        />
+      </a>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section id="story" class="section story-section" aria-labelledby="story-heading">
+    <div class="shell narrow">
+      <p class="eyebrow">Story</p>
+      <h2 id="story-heading">I’m Paul Welby, and I’m asking for help to stay housed</h2>
+
+      <div class="story-prose">
+        <p>
+          I am an honorably discharged, disabled U.S. Navy veteran over the age of 65, and I have worked hard all my life. My profession is front-end application software development, with a focus on front-end UI design using Angular. For the past 10 years, most of my work has been contract-based, and that has left me vulnerable when a contract ends early.
+        </p>
+        <p>
+          My last job was supposed to last more than a year, but after I completed my role, the company began losing money and cut the contract short at 9 months. I have been unemployed since June 15, 2026. I receive unemployment compensation from the State of California, but it has not been enough to cover my rent, and I have fallen far behind.
+        </p>
+        <p>
+          To make matters worse, at the same time, I have been dealing with a painful separation after my wife of 24 years developed severe behavioral health issues. During that crisis, she assaulted me, and I experienced this as elder abuse. I was advised to obtain a domestic violence restraining order, and when she did not appear in court, a 5-year restraining order was issued. We are now legally separated, and I am now living alone in a home filled with many reminders of that loss. This has made an already difficult situation even harder to bear.
+        </p>
+        <p>
+          I received a 60-day notice from my landlord on October 1, 2026, and I have until {{ deadline }} before I am evicted. The funds from this fundraiser, I am hoping, will help me pay my rent arrears so I can stay housed and avoid eviction.
+        </p>
+        <p>
+          I also hope to move away from my current residence and relocate closer to my brother, my only living family member, so I can spend my remaining years with some peace and stability.
+        </p>
+        <p>
+          If you are able to give, any amount would help me through this urgent time. If you cannot donate, sharing this fundraiser would also mean a great deal to me. Thank you for taking the time to read my story and for any support you can offer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Goal + GoFundMe -->
+  <section id="goal" class="section goal-section" aria-labelledby="goal-heading">
+    <div class="shell goal-layout">
+      <div>
+        <p class="eyebrow">Goal</p>
+        <h2 id="goal-heading">${{ goal.toLocaleString() }} for rent arrears and housing stability</h2>
+        <p>
+          This fund covers urgent rent arrears, housing needs, and a stable future move — so Paul can avoid eviction on {{ deadline }} and rebuild with dignity.
+        </p>
+        <div class="goal-actions">
+          <a class="btn btn-primary" [href]="goFundMeUrl" target="_blank" rel="noopener noreferrer">
+            Support on GoFundMe
+          </a>
+        </div>
+      </div>
+
+      <aside class="progress-panel" aria-label="Fundraising progress">
+        <div class="progress-amounts">
+          <strong>${{ raised.toLocaleString() }}</strong>
+          <span>raised of ${{ goal.toLocaleString() }}</span>
+        </div>
+        <div
+          class="progress-track"
+          role="progressbar"
+          [attr.aria-valuenow]="progress()"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [attr.aria-label]="progress() + '% funded'"
+        >
+          <span class="progress-fill" [style.width.%]="progress()"></span>
+        </div>
+        <ul class="progress-meta">
+          <li><span>{{ donorCount }}</span> donations</li>
+          <li><span>{{ deadline }}</span> deadline</li>
+          <li><span>{{ category }}</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Video + photos -->
+  <section id="media" class="section media-section" aria-labelledby="media-heading">
+    <div class="shell">
+      <div class="section-intro">
+        <p class="eyebrow">Video &amp; campaign</p>
+        <h2 id="media-heading">Hear from Paul</h2>
+        <p>Watch the campaign video, or open the graphic below to go to GoFundMe.</p>
+      </div>
+
+      <div class="video-frame">
+        <div
+          #youtubeHost
+          class="youtube-host"
+          title="Paul Welby's Housing Stability Fund video"
+        ></div>
+      </div>
+
+      <a
+        class="campaign-graphic"
+        [href]="goFundMeUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="assets/gofundme-paul-welby.png"
+          alt="See the cause I’m supporting — visit Paul Welby’s GoFundMe"
+          width="1200"
+          height="630"
+          loading="lazy"
+        />
+        <span class="campaign-graphic-label">Open GoFundMe campaign</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Impact / updates -->
+  <section id="updates" class="section updates-section" aria-labelledby="updates-heading">
+    <div class="shell narrow">
+      <p class="eyebrow">Impact &amp; updates</p>
+      <h2 id="updates-heading">Where things stand</h2>
+      <ol class="timeline">
+        @for (item of updates; track item.title) {
+          <li>
+            <p class="timeline-date">{{ item.date }}</p>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.body }}</p>
+          </li>
+        }
+      </ol>
+      <div class="updates-cta">
+        <a class="btn btn-primary" [href]="goFundMeUrl" target="_blank" rel="noopener noreferrer">
+          Donate or share on GoFundMe
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
+    <div class="shell contact-layout">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-heading">Reach Paul</h2>
+        <p>
+          Paul Welby organizes this fundraiser from {{ location }}. Use the GoFundMe campaign to donate or send a message.
+        </p>
+      </div>
+      <div class="contact-card">
+        <p><strong>Paul Welby</strong></p>
+        <p>{{ location }}</p>
+        <p>Disabled U.S. Navy veteran</p>
+        <p>Campaign started {{ started }}</p>
+        <a class="btn btn-primary btn-block" [href]="goFundMeUrl" target="_blank" rel="noopener noreferrer">
+          GoFundMe campaign
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <p>{{ brand }} · {{ location }}</p>
+  </div>
+</footer>

@@ -1,0 +1,66 @@
+:root {
+  --ink: #0a1628;
+  --ink-soft: #15283f;
+  --navy: #16324f;
+  --sea: #1f5a68;
+  --foam: #dce9ef;
+  --mist: #f3f7f9;
+  --paper: #faf8f4;
+  --gold: #c9a227;
+  --gold-bright: #e0bb3a;
+  --accent: #2a7a6a;
+  --text: #1a2838;
+  --muted: #5a6b7c;
+  --line: rgba(22, 50, 79, 0.12);
+  --shadow: 0 18px 50px rgba(10, 22, 40, 0.18);
+  --radius: 1.25rem;
+  --font-display: 'Manrope', 'Segoe UI', sans-serif;
+  --font-body: 'Manrope', 'Segoe UI', sans-serif;
+  --max: 68rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(31, 90, 104, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(201, 162, 39, 0.12), transparent 50%),
+    linear-gradient(180deg, var(--mist) 0%, var(--paper) 40%, #eef3f6 100%);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--sea);
+  text-underline-offset: 0.18em;
+}
+
+button,
+.btn {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
